@@ -14,4 +14,10 @@ document.querySelector(`.guess`).value = 7;
 document.querySelector(`.check`).addEventListener(`click`, function () {
   // when check button is clicked, print the inputed value
   console.log(document.querySelector(`.guess`).value);
+
+  console.log(guess, typeof guess);
+
+  if (!guess) {
+    document.querySelector(`.message`).textContent = `No Number!`;
+  }
 });
