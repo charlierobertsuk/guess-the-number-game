@@ -13,7 +13,7 @@ document.querySelector(`.guess`).value = 7;
 // random number generator
 // .random is between 0 and 1, so if timesed by 20 it will be between 0 and 20
 //trunc truncates it into an intager. but that means 20 is impossible cos 19.9999999 so just add 1
-const maxNamber = 1;
+const maxNamber = 20;
 let ranNumber = Math.trunc(Math.random() * maxNamber) + 1;
 let score = maxNamber;
 document.querySelector(`.score`).textContent = score;
@@ -68,7 +68,7 @@ document.querySelector(`.again`).addEventListener(`click`, function () {
   score = ranNumber;
   ranNumber = Math.trunc(Math.random() * maxNamber) + 1;
 
-  document.querySelector(`.messsage`).textContent = `Start guessing...`;
+  document.querySelector(`.message`).textContent = `Start guessing...`;
   document.querySelector(`.score`).textContent = score;
   document.querySelector(`.number`).textContent = `?`;
   document.querySelector(`.guess`).value = ``;
