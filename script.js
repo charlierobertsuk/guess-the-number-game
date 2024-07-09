@@ -16,6 +16,8 @@ document.querySelector(`.guess`).value = 7;
 const maxNamber = 20;
 let ranNumber = Math.trunc(Math.random() * maxNamber) + 1;
 let score = maxNamber;
+let highscore = 0;
+
 document.querySelector(`.score`).textContent = score;
 //console.log(ranNumber);
 //document.querySelector(`.number`).textContent = ranNumber;
@@ -41,6 +43,11 @@ document.querySelector(`.check`).addEventListener(`click`, function () {
     // manipulate css when there is a win
     document.querySelector(`body`).style.backgroundColor = `#60b347`;
     document.querySelector(`.number`).style.width = `30rem`;
+
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector(`.highscore`).textContent = highscore;
+    }
 
     // when there is a too low
   } else if (guess > ranNumber) {
