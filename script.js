@@ -13,12 +13,14 @@ document.querySelector(`.guess`).value = 7;
 // random number generator
 // .random is between 0 and 1, so if timesed by 20 it will be between 0 and 20
 //trunc truncates it into an intager. but that means 20 is impossible cos 19.9999999 so just add 1
-const maxNamber = 20;
-let ranNumber = Math.trunc(Math.random() * maxNamber) + 1;
-let score = maxNamber;
+const maxNumber = 20;
+let ranNumber = Math.trunc(Math.random() * maxNumber) + 1;
+let score = maxNumber;
 let highscore = 0;
 
 document.querySelector(`.score`).textContent = score;
+document.querySelector(`.between`).textContent = `(Between 1 and ${maxNumber})`;
+
 //console.log(ranNumber);
 //document.querySelector(`.number`).textContent = ranNumber;
 
@@ -28,8 +30,8 @@ document.querySelector(`.score`).textContent = score;
 document.querySelector(`.check`).addEventListener(`click`, function () {
   const guess = Number(document.querySelector(`.guess`).value);
 
-  console.log(` Input: ${document.querySelector(`.guess`).value}`);
-  console.log(`${guess} is a ${typeof guess}`);
+  //console.log(` Input: ${document.querySelector(`.guess`).value}`);
+  //console.log(`${guess} is a ${typeof guess}`);
 
   // when there is no input
   if (!guess) {
@@ -49,7 +51,7 @@ document.querySelector(`.check`).addEventListener(`click`, function () {
       document.querySelector(`.highscore`).textContent = highscore;
     }
     // this is dry code - half the size
-  } else if (guess !== ranNumber) {
+  } else if (guess !== ranNumber && guess < maxNumber && guess >= 0) {
     if (score > 1) {
       document.querySelector(`.message`).textContent =
         guess > ranNumber ? `Lower` : `higher`; // using the turnary operator
@@ -58,17 +60,23 @@ document.querySelector(`.check`).addEventListener(`click`, function () {
     } else {
       document.querySelector(`.message`).textContent = `You Lost!`;
     }
+  } else {
+    document.querySelector(`.message`).textContent = `Invalid`;
   }
 });
 
 document.querySelector(`.again`).addEventListener(`click`, function () {
-  score = ranNumber;
-  ranNumber = Math.trunc(Math.random() * maxNamber) + 1;
+  ranNumber = Math.trunc(Math.random() * maxNumber) + 1;
 
   document.querySelector(`.message`).textContent = `Start guessing...`;
-  document.querySelector(`.score`).textContent = maxNamber;
+  document.querySelector(`.score`).textContent = maxNumber;
   document.querySelector(`.number`).textContent = `?`;
   document.querySelector(`.guess`).value = ``;
   document.querySelector(`body`).style.backgroundColor = `#222`;
   document.querySelector(`.number`).style.width = `15rem`;
+  document.querySelector(
+    `.between`
+  ).textContent = `(Between 1 and ${maxNumber})`;
 });
+
+// add +1 +5 +10 + 50 buttons with its oppisites
