@@ -52,7 +52,7 @@ document.querySelector(`.check`).addEventListener(`click`, function () {
   } else if (guess !== ranNumber) {
     if (score > 1) {
       document.querySelector(`.message`).textContent =
-        guess > ranNumber ? `Lower` : `higher`;
+        guess > ranNumber ? `Lower` : `higher`; // using the turnary operator
       score--;
       document.querySelector(`.score`).textContent = score;
     } else {
@@ -66,7 +66,7 @@ document.querySelector(`.again`).addEventListener(`click`, function () {
   ranNumber = Math.trunc(Math.random() * maxNamber) + 1;
 
   document.querySelector(`.message`).textContent = `Start guessing...`;
-  document.querySelector(`.score`).textContent = score;
+  document.querySelector(`.score`).textContent = maxNamber;
   document.querySelector(`.number`).textContent = `?`;
   document.querySelector(`.guess`).value = ``;
   document.querySelector(`body`).style.backgroundColor = `#222`;
