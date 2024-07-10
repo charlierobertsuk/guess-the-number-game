@@ -48,21 +48,11 @@ document.querySelector(`.check`).addEventListener(`click`, function () {
       highscore = score;
       document.querySelector(`.highscore`).textContent = highscore;
     }
-
-    // when there is a too low
-  } else if (guess > ranNumber) {
+    // this is dry code - half the size
+  } else if (guess !== ranNumber) {
     if (score > 1) {
-      document.querySelector(`.message`).textContent = `Lower`;
-      score--;
-      document.querySelector(`.score`).textContent = score;
-    } else {
-      document.querySelector(`.message`).textContent = `You Lost!`;
-    }
-
-    // when there is a too high
-  } else if (guess < ranNumber) {
-    if (score > 1) {
-      document.querySelector(`.message`).textContent = `Higher`;
+      document.querySelector(`.message`).textContent =
+        guess > ranNumber ? `Lower` : `higher`;
       score--;
       document.querySelector(`.score`).textContent = score;
     } else {
